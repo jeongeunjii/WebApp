@@ -41,16 +41,78 @@ article {
 	line-height: 83px;
 }
 
-#review_left {
-	margin: 0;
-	width: 47%;
-	padding: 2%;
+#rotten img {
+	vertical-align: bottom;
 }
 
-#review_right {
+.col_left {
 	width: 47%;
-	padding: 2%;
-	position: relative;
-	top: -633px;
-	left: 50%;
+	margin-left: 2%;
+	margin-top: 2%;
+	float: left;
+}
+.col_right {
+	width:47%;
+	margin-right: 2%;
+	margin-top: 2%;
+	float: right;
+}
+
+.review {
+	font-weight: bold;
+	font-size: 8pt;
+	background-color: #E8DC9B;
+	border: 2px solid gray;
+	border-radius: 10px;
+	padding: 8px;
+}
+
+.col_left > p ,.col_right > p {
+	margin-bottom: 20pt;
+}
+
+.col_left img, .col_right img {
+	float: left;
+	margin-right: 5px;
+}
+
+.aff {
+	font-style: italic;
+}
+
+aside {
+	width: 250px;
+	background-color: #A2B964;
+	float: right;
+}
+
+dl {
+	font-size: 8pt;
+	font-family: 'Arial';
+	margin: 8pt;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+dt {
+	font-weight: bold;
+	margin-top: 10pt;
+}
+
+#bottom {
+	margin: 0px;
+	padding: 5px;
+	background-color: #A2B964;
+	text-align: center;
+	clear: both;
+}
+
+.valid {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	opacity: 0.5;
 }
