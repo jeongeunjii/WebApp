@@ -77,7 +77,6 @@
 				foreach ($musicsize as $music => $size) {
 					echo "<li class='mp3item'><a href=$music>" . basename($music) . "</a> (" . $size . " KB)</li>";
 				}
-				print_r($musicsize);
 
 				$playli = glob("lab5/musicPHP/songs/*.m3u");
 				arsort($playli);
