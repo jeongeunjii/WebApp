@@ -55,7 +55,7 @@
 				foreach ($artists as $artist) {
 					$artist_link = str_replace(" ", "_", $artist);
 					$artist_link_real = str_replace("'", "%27", $artist_link);
-					echo "<li><a href='http://en.wikipedia.org/wiki/$artist_link_real'>$artist_link</a></li>";
+					echo "<li><a href='http://en.wikipedia.org/wiki/$artist_link_real'>$artist</a></li>";
 				}
 				?>
 			</ol>
@@ -67,27 +67,35 @@
 			<h2>My Music and Playlists</h2>
 
 			<ul id="musiclist">
-				<li class="mp3item">
-					<a href="lab5/musicPHP/songs/paradise-city.mp3">paradise-city.mp3</a>
-				</li>
-				
-				<li class="mp3item">
-					<a href="lab5/musicPHP/songs/basket-case.mp3">basket-case.mp3</a>
-				</li>
+				<?php 
+				$musics = glob("lab5/musicPHP/songs/*.mp3");
+				foreach ($musics as $music) {
+					$size = (int)(filesize($music)/1024);
+					$musicsize[$music] = $size;
+				}
+				arsort($musicsize);
+				foreach ($musicsize as $music => $size) {
+					echo "<li class='mp3item'><a href=$music>" . basename($music) . "</a> (" . $size . " KB)</li>";
+				}
+				print_r($musicsize);
 
-				<li class="mp3item">
-					<a href="lab5/musicPHP/songs/all-the-small-things.mp3">all-the-small-things.mp3</a>
-				</li>
+				$playli = glob("lab5/musicPHP/songs/*.m3u");
+				arsort($playli);
+				foreach ($playli as $playli_sort) {
+					echo"<li class='playlistitem'>" . basename($playli_sort) . ":";
+					echo"<ul>";
+					$listmusic = file("$playli_sort");
+					shuffle($listmusic);
+					foreach ($listmusic as $listmusic_rand) {
+						if (strpos($listmusic_rand, "mp3")) {
+							echo"<li>" . $listmusic_rand . "</li>";
+						}
+					}
+					echo"</ul>";
+				}
+				?>
 
 				<!-- Exercise 8: Playlists (Files) -->
-				<li class="playlistitem">326-13f-mix.m3u:
-					<ul>
-						<li>Basket Case.mp3</li>
-						<li>All the Small Things.mp3</li>
-						<li>Just the Way You Are.mp3</li>
-						<li>Pradise City.mp3</li>
-						<li>Dreams.mp3</li>
-					</ul>
 			</ul>
 		</div>
 
